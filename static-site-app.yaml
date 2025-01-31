@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/tejirih/my-static-site.git  # Replace with your repo
     targetRevision: HEAD
-    path: overlays/dev  # Change this to 'overlays/prod' for production
+    path: overlays/prod  # Change this to 'overlays/prod' for production
   destination:
     server: https://kubernetes.default.svc
     namespace: default
