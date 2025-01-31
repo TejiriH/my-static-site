@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: static-site
+  namespace: argocd  # Ensure this is the namespace where ArgoCD is installed
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/tejirih/my-static-site.git  # Replace with your repo
+    targetRevision: HEAD
+    path: overlays/dev  # Change this to 'overlays/prod' for production
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true   # Remove resources no longer in Git
+      selfHeal: true # Fix drift if resources change outside Git
